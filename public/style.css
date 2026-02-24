@@ -1,0 +1,336 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #2d1450, #4b1a8a);
+    --glass-bg: rgba(0, 0, 0, 0.4);
+    /* Glass background for contrast */
+    --glass-border: rgba(255, 255, 255, 0.2);
+    /* No borders, just text on paper */
+    --text-color: #ffffff;
+    /* Light text */
+    /* Dark text for white paper */
+    --low-priority: #2ecc71;
+    --medium-priority: #f39c12;
+    --high-priority: #e74c3c;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    /* Align to top */
+    justify-content: center;
+    /* Center horizontally */
+    /* Using the NEW book background */
+    background: #1a0b2e url('2bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Subtle overlay pattern */
+
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 5vh;
+    /* Top offset */
+    z-index: 10;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--card-shadow);
+    border-radius: 12px;
+    padding: 2.5rem !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Faint dot pattern effect */
+.glass-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.main-title {
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    /* Dynamic gradient text */
+    background: linear-gradient(90deg, #ff8a00, #e52e71, #9c27b0, #ff8a00);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 5s ease infinite;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    /* Strong shadow for visibility */
+    margin-bottom: 2rem !important;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.custom-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    color: #fff !important;
+    /* Light text */
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.custom-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.custom-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+select.custom-input option {
+    background: #2d1450;
+    color: #fff;
+}
+
+.glow-button {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    /* Matching the header gradient */
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 10.5px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+    background: linear-gradient(90deg, #e52e71, #ff8a00);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 138, 0, 0.4);
+}
+
+.task-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.task-text {
+    flex-grow: 1;
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.priority-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.priority-High {
+    background: var(--high-priority);
+    box-shadow: 0 0 10px var(--high-priority);
+}
+
+.priority-Medium {
+    background: var(--medium-priority);
+    box-shadow: 0 0 10px var(--medium-priority);
+}
+
+.priority-Low {
+    background: var(--low-priority);
+    box-shadow: 0 0 10px var(--low-priority);
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    /* Light icon */
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    color: var(--high-priority);
+}
+
+.task-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    /* Light icon */
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    color: var(--medium-priority);
+}
+
+.check-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    /* Light outline */
+    background: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-btn.checked {
+    background: #2ecc71;
+    /* Green check */
+    border-color: #2ecc71;
+}
+
+.check-btn.checked::after {
+    content: '✓';
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.filter-btn {
+    border-radius: 8px !important;
+    font-size: 0.9rem;
+    color: #fff !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.filter-btn.active {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Make sure text above filter buttons is visible */
+.text-light {
+    color: #fff !important;
+    /* Override bootstrap class */
+}
+
+/* Responsive Queries */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .glass-card {
+        padding: 20px !important;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .filter-group {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .filter-btn {
+        flex: 1;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1000px;
+    }
+
+    .main-title {
+        font-size: 3rem;
+    }
+}
+
+/* Accessibility: Better contrast for small text */
+.opacity-50 {
+    opacity: 0.7 !important;
+}
+
+.opacity-75 {
+    opacity: 0.9 !important;
+}
