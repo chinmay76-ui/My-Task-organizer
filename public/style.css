@@ -76,31 +76,12 @@ body {
     text-transform: uppercase;
     text-align: center;
     color: #fff;
-    /* Dynamic gradient text */
-    background: linear-gradient(90deg, #ff8a00, #e52e71, #9c27b0, #ff8a00);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientFlow 5s ease infinite;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     /* Strong shadow for visibility */
     margin-bottom: 2rem !important;
 }
 
-@keyframes gradientFlow {
-    0% {
-        background-position: 0% 50%;
-    }
 
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
 
 .custom-input {
     background: rgba(255, 255, 255, 0.05);
